@@ -1,0 +1,3 @@
+<?php
+    $path = "/EsquivelA-blog/";
+
