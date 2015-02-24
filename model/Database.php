@@ -1,7 +1,10 @@
 <?php
 
 class Database {
-
+    
+    /*
+     * Private variables 
+    */
     private $connection;
     private $host;
     private $username;
@@ -9,6 +12,9 @@ class Database {
     private $database;
     public $error;
 
+    /*
+     * constructs a user in the database
+     */
     public function __construct($host, $username, $password, $database) {
         $this->host = $host;
         $this->username = $username;
@@ -16,7 +22,10 @@ class Database {
         $this->database = $database;
 
         $this->connection = new mysqli($host, $username, $password);
-
+        
+        /*
+         * If there is a connection error it will die
+         */
         if ($this->connection->connect_error) {
             die("<p>Error: " . $this->connection->connect_error . "</p>");
         }
@@ -33,7 +42,10 @@ class Database {
             echo "<p>Database already exists.</p>";
         }
     }
-
+    
+    /*
+     * Opens a connection 
+     */
     public function openConnection() {
         $this->connection = new mysqli($this->host, $this->username, $this->password, $this->database);
 
@@ -41,7 +53,10 @@ class Database {
             die("<p>Error: " . $this->connection->connect_error . "</p>");
         }
     }
-
+    
+    /*
+     * closes the connection
+     */
     public function closeConnection() {
         if (isset($this->connection)) {
             $this->connection->close();
