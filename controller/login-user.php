@@ -1,7 +1,13 @@
 <?php
+      /*
+     * Puts evrything for config.php and login-verify.php on this page
+     */
     require_once(__DIR__ . "/../model/config.php");
     require_once(__DIR__ . "/../controller/login-verify.php");
     
+     /*
+     * Authenticates user
+     */
     if(!authenticateUser()) {
         header("Location: " . $path . "index.php");
         die();
@@ -15,6 +21,9 @@
     if($query->num_rows == 1) {
         $row = $query->fetch_array();
         
+        /*
+         * If the password and username is correcct echo Login Successful
+         */
         if($row["password"] === crypt($password, $row["salt"])) {
             $_SESSION["authenticated"] = true;
             echo "<p>Login Successful!</p>";
