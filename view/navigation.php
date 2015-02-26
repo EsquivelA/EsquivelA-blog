@@ -7,13 +7,7 @@
      /*
      * This authenticates the user
      */
-    if(!authenticateUser()) {
-         /*
-         * If the user is not authenticated the page will die 
-         */
-        header("Location: " . $path . "index.php");
-        die();
-    }
+
 ?>
 <nav>
     <ul>
